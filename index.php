@@ -18,7 +18,7 @@ $conn = null;
 
 // Assignment Begins
 
-$id = 6
+$id = 6;
 
 $query = 'SELECT * FROM accounts
 		  WHERE id < :id';
