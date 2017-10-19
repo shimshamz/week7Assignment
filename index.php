@@ -15,21 +15,23 @@ try {
 }
 $conn = null;
 
-
 // Assignment Begins
 
 $id = 6;
 
-$query = 'SELECT * FROM accounts
-		  WHERE id < :id';
+$query = 'SELECT * FROM accounts WHERE id < :id';
 $statement = $conn->prepare($query);
 $statement->bindValue(':id', $id); 
 $statement->execute();
+$accounts = $statement->fetchAll();
 $statement->closerCursor();
+
+$count = $statement->rowCount();
+echo "Results: <br>";
 ?>
 
 <?php foreach ($accounts as $account) { ?>
-<table>
+<table border="1">
 	<tr>
 		<td><?php echo $account['id']; ?></td>
 		<td><?php echo $account['email']; ?></td>
